@@ -1,0 +1,31 @@
+#!/bin/bash
+# Author: Bruno Vilalba
+# Description: Script to pull current public IP address and add a rule to EC2 security group allowing SSH access
+#
+# Prerequisites: aws cli installed and configured
+#
+# Configuration: set DESCRPTION and SG
+#
+# Usage: bash aws-update-public-ip dev/prod
+#
+# e.g. dev security group: bash updateip dev
+
+ENV="$1"
+IP=$(curl ifconfig.me)
+IPCIDR="$IP/32"
+DESCRIPTION="Rule description"
+
+if [[ $ENV == "dev" ]]; then
+	REGION="us-east-1"
+	SG="sg-abcde123456"
+fi
+
+if [[ $ENV == "prod" ]]; then
+	REGION="sa-east-1"
+	SG="sg-abcde123456"
+fi
+
+aws ec2 authorize-security-group-ingress \
+	--region $REGION \
+    --group-id $SG \
+    --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges='[{CidrIp="'$IPCIDR'",Description="'$DESCRIPTION'"}]'
