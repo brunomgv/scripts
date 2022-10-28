@@ -8,7 +8,7 @@
 #
 # Usage: bash aws-update-public-ip dev/prod
 #
-# e.g. dev security group: bash updateip dev
+# e.g. dev security group: bash aws-update-public-ip dev
 
 ENV="$1"
 IP=$(curl ifconfig.me)
