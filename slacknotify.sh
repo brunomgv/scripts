@@ -8,7 +8,7 @@
 #
 # Usage: sh slacknotify.sh "Hello, World!"
 #
-# e.g. dev security group: bash aws-update-public-ip dev
+# e.g. sh slacknotify.sh "Hello, World!"
 
 # Check if the argument is provided
 if [ $# -eq 0 ]; then
