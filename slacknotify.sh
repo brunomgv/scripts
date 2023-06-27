@@ -6,7 +6,7 @@
 #
 # Configuration: Feel free to customize the message sent
 #
-# Usage: sh slacknotify.sh "Hello, World!"
+# Usage: sh slacknotify.sh "Message"
 #
 # e.g. sh slacknotify.sh "Hello, World!"
 
